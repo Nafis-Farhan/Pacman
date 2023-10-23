@@ -63,7 +63,7 @@ def calculate_probabilities(smoothing=False):
 			neg_prob[token] = neg_counts[token]/neg_tot
 	return pos_prob, neg_prob
 
-smoothing = True
+smoothing = False
 pos_prob, neg_prob = calculate_probabilities(smoothing)
 
 def find_accuracy():
@@ -105,7 +105,7 @@ def classify_review(review):
 			neg += math.log(null_neg)
 	#given prob of neg and pos snts is .5
 	neg += math.log(.5)
-	neg += math.log(.5)
+	pos += math.log(.5)
 	if pos>neg:
 		return 'pos'
 	else:
